@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='styles/main.css' rel='stylesheet' type="text/css">
+</head>
+
+<body ng-app="todoListApp">
+    <div ng-controller="mainCtrl">
+        <h1 ng-click="helloWorld()">Mt TODOS {{ prova }} </h1>
+        <table width="100%">
+            <tr class="item" ng-repeat="todo in todo_list">
+
+                <td ng-hide="todo.selected">
+                    <input type="checkbox" ng-model="todo.complete">
+                </td>
+                <td ng-hide="todo.selected">
+                    <span ng-click="select( todo )" ng-class="{'completed' : todo.complete}"> {{ todo.name }} </span>
+                </td>
+                <td ng-hide="todo.selected">
+                    <button ng-click="cancella( todo )"> Elimina </button>
+                </td>
+
+                <td colspan="3" ng-show="todo.selected">
+                    <input type="text" ng-model="todo.name" ng-blur="deselect( todo )">
+                </td>
+
+            </tr>
+        </table>
+
+        <button ng-click="aggiungi()"> Aggiungi </button>
+        <hr>
+        <!-- <pre>{{ todo_list | json }} </pre> -->
+    </div>
+    <div ng-controller="altCtrl">
+
+        <h1> elementi in lista {{ prova }} </h1>
+        <a ng-click="update()">Aggiorna</a>
+    </div>
+    <script src="vendor/angular.js" type="text/javascript"></script>
+    <script src="scripts/app.js" type="text/javascript"></script>
+
+</body>
+
+</html>
